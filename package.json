@@ -1,17 +1,17 @@
 {
-  "name": "procedure-fns",
+  "name": "hash-fns",
   "author": "ehmpathy",
   "description": "easily create, assess, and assure hashes within a pit-of-success",
   "version": "1.0.0",
-  "repository": "ehmpathy/procedure-fns",
-  "homepage": "https://github.com/ehmpathy/procedure-fns",
+  "repository": "ehmpathy/hash-fns",
+  "homepage": "https://github.com/ehmpathy/hash-fns",
   "keywords": [
     "hash",
     "pit-of-success",
     "domain-glossary",
     "sha256"
   ],
-  "bugs": "https://github.com/ehmpathy/procedure-fns/issues",
+  "bugs": "https://github.com/ehmpathy/hash-fns/issues",
   "license": "MIT",
   "main": "dist/index.js",
   "engines": {
