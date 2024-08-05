@@ -2,7 +2,7 @@
   "name": "hash-fns",
   "author": "ehmpathy",
   "description": "easily create, assess, and assure hashes within a pit-of-success",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": "ehmpathy/hash-fns",
   "homepage": "https://github.com/ehmpathy/hash-fns",
   "keywords": [
