@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0 (2024-08-05)
+
+
+### Features
+
+* **init:** initialize based on procedure-fns ([f4a855c](https://github.com/ehmpathy/hash-fns/commit/f4a855c0c5a775e1aed04006c021ab08684866bc))
+
 ## 1.0.0 (2024-07-28)
 
 
