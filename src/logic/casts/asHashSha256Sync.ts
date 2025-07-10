@@ -11,5 +11,5 @@ import { Hash } from '../../domain/Hash';
  * ref
  * - https://stackoverflow.com/a/27970509/3068233
  */
-export const toHashSha256Sync = (data: string): Hash =>
+export const asHashSha256Sync = (data: string): Hash =>
   crypto.createHash('sha256').update(data).digest('hex') as Hash;

@@ -1,14 +1,14 @@
 import { asUniDate } from '@ehmpathy/uni-time';
 import { getError, given, then, when } from 'test-fns';
 
-import { toHashSha256Sync } from '../casts/toHashSha256Sync';
+import { asHashSha256Sync } from '../..';
 import { isHashSha256 } from './isHashSha256';
 
 describe('isHashSha256', () => {
   given('a string', () => {
     const bestBirthday = asUniDate('2000-08-21');
     when('we hash it', () => {
-      const hashed = toHashSha256Sync(bestBirthday);
+      const hashed = asHashSha256Sync(bestBirthday);
       then('it should be a sha256 hash', () => {
         expect(isHashSha256(hashed)).toBe(true);
       });
