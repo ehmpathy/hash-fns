@@ -8,7 +8,7 @@ import { Hash } from '../../domain/Hash';
  * ref
  * - https://stackoverflow.com/a/48161723/3068233
  */
-export const toHashSha256 = async (message: string): Promise<Hash> => {
+export const asHashSha256 = async (message: string): Promise<Hash> => {
   // encode as UTF-8
   const msgBuffer = new TextEncoder().encode(message);
 
