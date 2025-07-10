@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/ehmpathy/hash-fns/compare/v1.0.1...v1.1.0) (2025-07-10)
+
+
+### Features
+
+* **hash:** add md5 and shake256 ([c33afc8](https://github.com/ehmpathy/hash-fns/commit/c33afc80860152b033e575e19896cec16dbfb006))
+
+
+### Bug Fixes
+
+* **deps:** resolve audit fix ([e460ca9](https://github.com/ehmpathy/hash-fns/commit/e460ca939109c44a8a55c3a380b0d0a07c583c59))
+* **pkg:** export the new mechanisms ([e6222d8](https://github.com/ehmpathy/hash-fns/commit/e6222d8d3cb648d83d5d3f94dd964cff50dff3a7))
+* **practs:** bump to latest best ([38e8924](https://github.com/ehmpathy/hash-fns/commit/38e892474f5b78151e904b5dd6752bd939e79dd8))
+
 ## [1.0.1](https://github.com/ehmpathy/hash-fns/compare/v1.0.0...v1.0.1) (2024-08-05)
 
 
