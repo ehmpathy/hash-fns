@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/ehmpathy/hash-fns/compare/v1.1.0...v1.1.1) (2025-12-02)
+
+
+### Bug Fixes
+
+* **iso:** support isomorphic usage against web envs for sha256 async ([cf15a9a](https://github.com/ehmpathy/hash-fns/commit/cf15a9ac6eb442322685165740861de4366a6759))
+
 ## [1.1.0](https://github.com/ehmpathy/hash-fns/compare/v1.0.1...v1.1.0) (2025-07-10)
 
 
