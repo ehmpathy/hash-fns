@@ -1,6 +1,6 @@
 import * as crypto from 'crypto';
 
-import { Hash } from '../../domain/Hash';
+import type { Hash } from '@src/domain.objects/Hash';
 
 /**
  * a simple function which converts a string into an sha256 hash
