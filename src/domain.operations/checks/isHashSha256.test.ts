@@ -1,7 +1,8 @@
 import { asUniDate } from '@ehmpathy/uni-time';
 import { getError, given, then, when } from 'test-fns';
 
-import { asHashSha256Sync } from '../..';
+import { asHashSha256Sync } from '@src/domain.operations/..';
+
 import { isHashSha256 } from './isHashSha256';
 
 describe('isHashSha256', () => {
