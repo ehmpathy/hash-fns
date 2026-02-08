@@ -1,29 +1,19 @@
-import * as crypto from 'crypto';
+import { sha256 } from '@noble/hashes/sha2.js';
+import { bytesToHex } from '@noble/hashes/utils.js';
 
 import type { Hash } from '@src/domain.objects/Hash';
 
 /**
- * a simple function which converts a string into an sha256 hash
- *
- * ref
- * - https://stackoverflow.com/a/48161723/3068233
+ * .what = converts a string into a sha256 hash
+ * .why = deterministic content fingerprint for dedup, integrity, and cache keys
  */
-export const asHashSha256 = async (message: string): Promise<Hash> => {
-  // encode as UTF-8
-  const msgBuffer = new TextEncoder().encode(message);
+export const asHashSha256 = (message: string): Hash => {
+  // encode as utf-8
+  const msgBytes = new TextEncoder().encode(message);
 
   // hash the message
-  const hashBuffer = await crypto
-    .createHash('sha256')
-    .update(msgBuffer)
-    .digest();
+  const hashBytes = sha256(msgBytes);
 
-  // convert ArrayBuffer to Array
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-
-  // convert bytes to hex string
-  const hashHex = hashArray
-    .map((b) => b.toString(16).padStart(2, '0'))
-    .join('');
-  return hashHex as Hash;
+  // convert to hex string
+  return bytesToHex(hashBytes) as Hash;
 };
