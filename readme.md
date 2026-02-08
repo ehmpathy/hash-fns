@@ -5,6 +5,8 @@
 
 easily create, assess, and assure hashes within a pit-of-success
 
+isomorphic — works on node, bun, deno, browsers, cloudflare workers, and react native. powered by [@noble/hashes](https://github.com/paulmillr/noble-hashes).
+
 # install
 
 ```sh
@@ -16,54 +18,60 @@ npm install hash-fns
 for example
 
 ```ts
-import { Hash, toHashSha256, isHashSha256 } from 'hash-fns';
+import { Hash, asHashSha256, isHashSha256 } from 'hash-fns';
 
 // create a hash
-const versionHash: Hash = await toHashSha256('some data');
+const versionHash: Hash = asHashSha256('some data');
 
 // verify that a given value is a valid hash
 const foundHash: Hash = isHashSha256.assure('__hash__');
 
-// typeguard against random strings being passed as hashes
+// typeguard against random strings passed as hashes
 const expectHash: Hash = 'some string'; // 🛑 typescript will throw an error, since string is not assignable to Hash
 
 // use a hash within functions that expect strings
-const expectWords: string = await toHashSha256('some data'); // ✅ passes, as Hash is assignable to strings
+const expectWords: string = asHashSha256('some data'); // ✅ passes, as Hash is assignable to strings
 ```
 
 
 ## 🔧 mechs
 
-### `asHashMd5(message: string): Promise<Hash>`
+### `asHashSha256(message: string): Hash`
 
-- **.what**: creates a 128-bit MD5 hash from a UTF-8 string
-- **.why**: fast and compact for non-secure use cases like fingerprinting, deduplication, or cache busting
+- **.what**: creates a 256-bit sha-256 hash from a utf-8 string
+- **.why**: cryptographically secure hash for dedup, version tags, signatures, and data integrity
 
 **example:**
 ```ts
-const cacheKey = await asHashMd5('GET /api/resource?id=123');
+const versionTag = asHashSha256(JSON.stringify(configObject));
 ```
 
 ---
 
-### `asHashSha256(message: string): Promise<Hash>`
+### `asHashShake256(message: string, options?: { bytes: number }): Hash`
 
-- **.what**: creates a 256-bit SHA-256 hash from a UTF-8 string
-- **.why**: cryptographically secure hash for versioning, signatures, and data integrity
+- **.what**: creates a variable-length cryptographic hash via shake256 (keccak sponge function)
+- **.why**: ideal when you need a specific hash length, such as for compact cache keys or extended fingerprints
 
 **example:**
 ```ts
-const versionTag = await asHashSha256(JSON.stringify(configObject));
+const cacheKey = asHashShake256('some content', { bytes: 16 }); // 32-char hex (16 bytes)
+const extended = asHashShake256('some content', { bytes: 64 }); // 128-char hex (64 bytes)
 ```
 
 ---
 
-### `asHashShake256(message: string, options?: { bytes: number }): Promise<Hash>`
+### `isHashSha256(input: string): input is Hash`
 
-- **.what**: creates a variable-length cryptographic hash using SHAKE256 (Keccak sponge function)
-- **.why**: ideal when you need a specific hash length, such as for compact tokens, extended fingerprints, or key material
+- **.what**: type guard that checks if a string is a valid 64-character hex sha-256 hash
+- **.why**: validate hash format at runtime with compile-time type narrow
 
 **example:**
 ```ts
-const customHash = await asHashShake256('some secret', { bytes: 64 }); // 512-bit output
+if (isHashSha256(value)) {
+  // value is now typed as Hash
+}
+
+// or fail fast
+isHashSha256.assure(value); // throws if not a valid sha-256 hash
 ```
